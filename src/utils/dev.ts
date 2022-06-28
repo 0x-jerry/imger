@@ -1,4 +1,4 @@
-import { debug } from 'debug'
+import debug from 'debug'
 import { name } from '../const'
 
 export function createLogger(ns?: string) {
