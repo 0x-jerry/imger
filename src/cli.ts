@@ -12,7 +12,8 @@ interface CliArgs {
   preset: string
 }
 
-const warn = (l: string) => console.log(pc.bgRed(pc.white(l)))
+const error = (l: string) => console.log(pc.bgRed(pc.white(` ${l} `)))
+const warn = (l: string) => console.log(pc.bgYellow(pc.white(` ${l} `)))
 
 cli
   .version(version)
@@ -34,9 +35,9 @@ cli
     let buf: Buffer
     try {
       buf = await readFile(input)
-    } catch (error) {
-      warn(`File [${input}] not exists. Please check image path.`)
-      logger.warn('read image failed, %s', error)
+    } catch (err) {
+      error(`File [${input}] not exists. Please check image path.`)
+      logger.warn('read image failed, %s', err)
       return
     }
 
@@ -59,11 +60,12 @@ async function getPreset(presetPath: string): Promise<GenerateImagePreset> {
     if (Array.isArray(mayPreset)) throw new Error(`${presetPath} is not a preset.`)
 
     const isValidResizeType = (n: Partial<ResizeType>) =>
-      typeof n === 'string' ? true : n.name && n.size
+      typeof n === 'string' || (n.name && n.size)
 
     return mayPreset.filter(isValidResizeType)
-  } catch (error) {
-    logger.warn('Get preset failed, %o', error)
+  } catch (err) {
+    warn('Parse preset failed, use default preset config instead.')
+    logger.warn('Get preset failed, %o', err)
     return presets[0].preset
   }
 }
