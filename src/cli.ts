@@ -57,7 +57,9 @@ async function getPreset(presetPath: string): Promise<GenerateImagePreset> {
 
     const mayPreset = JSON.parse(txt)
 
-    if (Array.isArray(mayPreset)) throw new Error(`${presetPath} is not a preset.`)
+    if (!Array.isArray(mayPreset)) {
+      throw new Error(`${presetPath} is not a preset.`)
+    }
 
     const isValidResizeType = (n: Partial<ResizeType>) =>
       typeof n === 'string' || (n.name && n.size)
