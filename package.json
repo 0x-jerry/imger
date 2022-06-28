@@ -1,7 +1,7 @@
 {
   "name": "imger",
   "description": "A command line tool that help you to generator images, support icns and ico.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "./dist/export.js",
   "types": "./dist/export.d.ts",
   "type": "module",
