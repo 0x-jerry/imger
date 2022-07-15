@@ -2,8 +2,7 @@ import { CAC } from 'cac'
 import { readFile } from 'fs/promises'
 import { version, name } from './const'
 import { generateImage, GenerateImagePreset } from './modules/imger'
-import pc from 'picocolors'
-import { logger } from './utils/dev'
+import { logger, warn } from './utils/dev'
 import { Arrayable, toArray } from '@0x-jerry/utils'
 import { isValidPreset, defaultPreset } from './presets'
 
@@ -12,9 +11,6 @@ const cli = new CAC(name)
 interface CliArgs {
   preset: string
 }
-
-const error = (l: string) => console.log(pc.bgRed(pc.white(` ${l} `)))
-const warn = (l: string) => console.log(pc.bgYellow(pc.white(` ${l} `)))
 
 cli
   .version(version)
