@@ -1,10 +1,11 @@
 import { CAC } from 'cac'
 import { readFile } from 'fs/promises'
 import { version, name } from './const'
-import { generateImage, GenerateImagePreset, ResizeType } from './modules/imger'
+import { generateImage, GenerateImagePreset } from './modules/imger'
 import pc from 'picocolors'
 import { logger } from './utils/dev'
-import { presets } from './presets'
+import { Arrayable, toArray } from '@0x-jerry/utils'
+import { isValidPreset, defaultPreset } from './presets'
 
 const cli = new CAC(name)
 
@@ -27,47 +28,51 @@ cli
     }
   )
   .action(async (input, output, args: CliArgs) => {
-    if (!input || !output) {
+    const presets: GenerateImagePreset[] = []
+
+    if (input && output) {
+      presets.push(defaultPreset(input, output))
+    }
+
+    if (args.preset) {
+      const conf = await getPreset(args.preset)
+      presets.push(...conf)
+    }
+
+    if (!presets.length) {
       cli.outputHelp()
       return
     }
 
-    let buf: Buffer
-    try {
-      buf = await readFile(input)
-    } catch (err) {
-      error(`File [${input}] not exists. Please check image path.`)
-      logger.warn('read image failed, %s', err)
-      return
+    for (const preset of presets) {
+      try {
+        await generateImage(preset)
+      } catch (error) {
+        warn('generate image error:')
+        console.log(error)
+      }
     }
-
-    const preset =
-      presets.find((p) => p.name === args.preset)?.preset || (await getPreset(args.preset))
-
-    await generateImage(buf, { output, preset })
   })
 
 cli.parse()
 
-async function getPreset(presetPath: string): Promise<GenerateImagePreset> {
+async function getPreset(presetPath: string): Promise<GenerateImagePreset[]> {
   try {
     const txt = await readFile(presetPath, {
       encoding: 'utf8',
     })
 
-    const mayPreset = JSON.parse(txt)
+    const mayPreset: Arrayable<GenerateImagePreset> = JSON.parse(txt)
 
     if (!Array.isArray(mayPreset)) {
       throw new Error(`${presetPath} is not a preset.`)
     }
 
-    const isValidResizeType = (n: Partial<ResizeType>) =>
-      typeof n === 'string' || (n.name && n.size)
-
-    return mayPreset.filter(isValidResizeType)
+    return toArray(mayPreset).filter(isValidPreset)
   } catch (err) {
     warn('Parse preset failed, use default preset config instead.')
     logger.warn('Get preset failed, %o', err)
-    return presets[0].preset
+
+    return []
   }
 }

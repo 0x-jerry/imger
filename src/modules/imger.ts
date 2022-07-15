@@ -1,8 +1,9 @@
 import { join } from 'path'
 import sharp from 'sharp'
-import { writeFile } from 'fs/promises'
+import { readFile, writeFile } from 'fs/promises'
 import { ensureDir } from 'fs-extra'
 import { createICNS, createICO } from 'png2icons'
+import { error, logger } from '../utils/dev'
 
 export interface ResizeOption {
   /**
@@ -21,21 +22,24 @@ export interface ResizeOption {
 
 export type ResizeType = ResizeOption | string
 
-export type GenerateImagePreset = Array<ResizeType>
-
-export interface GenImageOption {
+export interface GenerateImagePreset {
+  /**
+   * input image path
+   */
+  input: string
   /**
    * output dir
    */
   output: string
-  preset: GenerateImagePreset
+  shapes: ResizeType[]
 }
 
-export async function generateImage(source: Buffer, option: GenImageOption) {
+export async function generateImage(option: GenerateImagePreset) {
+  const source = await getImageSource(option.input)
   const s = sharp(source)
   await ensureDir(option.output)
 
-  const p = option.preset.map(async (conf) => {
+  const p = option.shapes.map(async (conf) => {
     const isStr = typeof conf === 'string'
     const size = parseSize(isStr ? conf : conf.size)
 
@@ -63,6 +67,19 @@ export async function generateImage(source: Buffer, option: GenImageOption) {
   })
 
   await Promise.all(p)
+}
+
+export async function getImageSource(input: string) {
+  let buf: Buffer
+
+  try {
+    buf = await readFile(input)
+    return buf
+  } catch (err) {
+    error(`File [${input}] not exists. Please check image path.`)
+    logger.warn('read image failed, %s', err)
+    throw err
+  }
 }
 
 /**

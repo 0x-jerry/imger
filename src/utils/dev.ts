@@ -1,5 +1,6 @@
 import debug from 'debug'
 import { name } from '../const'
+import pc from 'picocolors'
 
 export function createLogger(ns?: string) {
   if (!ns) {
@@ -14,3 +15,6 @@ export const logger = {
   warn: createLogger('warn'),
   error: createLogger('error'),
 }
+
+export const error = (l: string) => console.log(pc.bgRed(pc.white(` ${l} `)))
+export const warn = (l: string) => console.log(pc.bgYellow(pc.white(` ${l} `)))
