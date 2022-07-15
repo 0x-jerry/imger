@@ -27,21 +27,25 @@ Use json preset file.
 `./preset.json`:
 
 ```json
-[
-  "icon.ico",
-  "icon.icns",
-  "128x128.png",
-  "128x128@2x.png",
-  "512x512.png",
-  {
-    "name": "custom-name.png",
-    "size": "25x25"
-  },
-  {
-    "name": "custom-name@2x.png",
-    "size": "25x25@2x"
-  }
-]
+{
+  "input": "path/to/image",
+  "output": "path/to/output/dir",
+  "shapes": [
+    "icon.ico",
+    "icon.icns",
+    "128x128.png",
+    "128x128@2x.png",
+    "512x512.png",
+    {
+      "name": "custom-name.png",
+      "size": "25x25"
+    },
+    {
+      "name": "custom-name@2x.png",
+      "size": "25x25@2x"
+    }
+  ]
+}
 ```
 
 ```sh
