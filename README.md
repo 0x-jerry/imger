@@ -49,5 +49,5 @@ Use json preset file.
 ```
 
 ```sh
-imger ./path/to/image.png ./output -p ./preset.json
+imger -p ./preset.json
 ```
