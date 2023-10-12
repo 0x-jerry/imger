@@ -4,14 +4,14 @@ specifiers:
   '@0x-jerry/utils': ^1.8.2
   '@0x-jerry/x-release': ^0.3.6
   '@types/debug': ^4.1.7
-  '@types/fs-extra': ^9.0.13
+  '@types/fs-extra': ^11.0.0
   '@types/node': ^18.0.0
   '@types/prompts': ^2.0.14
   '@types/sharp': ^0.30.4
   cac: ^6.7.12
   debug: ^4.3.4
   execa: ^6.1.0
-  fs-extra: ^10.1.0
+  fs-extra: ^11.0.0
   picocolors: ^1.0.0
   png2icons: ^2.0.1
   prompts: ^2.4.2
@@ -27,7 +27,7 @@ dependencies:
   cac: 6.7.12
   debug: 4.3.4
   execa: 6.1.0
-  fs-extra: 10.1.0
+  fs-extra: 11.1.1
   picocolors: 1.0.0
   png2icons: 2.0.1
   prompts: 2.4.2
@@ -37,7 +37,7 @@ dependencies:
 devDependencies:
   '@0x-jerry/x-release': 0.3.6
   '@types/debug': 4.1.7
-  '@types/fs-extra': 9.0.13
+  '@types/fs-extra': 11.0.2
   '@types/node': 18.0.0
   '@types/prompts': 2.0.14
   '@types/sharp': 0.30.4
@@ -147,8 +147,15 @@ packages:
       '@types/ms': 0.7.31
     dev: true
 
-  /@types/fs-extra/9.0.13:
-    resolution: {integrity: sha512-nEnwB++1u5lVDM2UI4c1+5R+FYaKfaAzS4OococimjVm3nQw3TuzH5UNsocrcTBbhnerblyHj4A49qXbIiZdpA==}
+  /@types/fs-extra/11.0.2:
+    resolution: {integrity: sha512-c0hrgAOVYr21EX8J0jBMXGLMgJqVf/v6yxi0dLaJboW9aQPh16Id+z6w2Tx1hm+piJOLv8xPfVKZCLfjPw/IMQ==}
+    dependencies:
+      '@types/jsonfile': 6.1.2
+      '@types/node': 18.0.0
+    dev: true
+
+  /@types/jsonfile/6.1.2:
+    resolution: {integrity: sha512-8t92P+oeW4d/CRQfJaSqEwXujrhH4OEeHRjGU3v1Q8mUS8GPF3yiX26sw4svv6faL2HfBtGTe2xWIoVgN3dy9w==}
     dependencies:
       '@types/node': 18.0.0
     dev: true
@@ -705,9 +712,9 @@ packages:
     resolution: {integrity: sha512-y6OAwoSIf7FyjMIv94u+b5rdheZEjzR63GTyZJm5qh4Bi+2YgwLCcI/fPFZkL5PSixOt6ZNKm+w+Hfp/Bciwow==}
     dev: false
 
-  /fs-extra/10.1.0:
-    resolution: {integrity: sha512-oRXApq54ETRj4eMiFzGnHWGy+zo5raudjuxN0b8H7s/RU2oW0Wvsx9O0ACRN/kRq9E8Vu/ReskGB5o3ji+FzHQ==}
-    engines: {node: '>=12'}
+  /fs-extra/11.1.1:
+    resolution: {integrity: sha512-MGIE4HOvQCeUCzmlHs0vXpih4ysz4wg9qiSAu6cd42lVwPbTM1TjV7RusoyQqMmk/95gdQZX72u+YW+c3eEpFQ==}
+    engines: {node: '>=14.14'}
     dependencies:
       graceful-fs: 4.2.10
       jsonfile: 6.1.0
