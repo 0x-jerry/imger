@@ -18,7 +18,7 @@ specifiers:
   sharp: ^0.30.7
   tsup: ^6.1.2
   tsx: ^3.6.0
-  typescript: ^4.7.4
+  typescript: ^5.0.0
   unconfig: ^0.3.4
   vitest: ^0.22.0
 
@@ -41,9 +41,9 @@ devDependencies:
   '@types/node': 18.0.0
   '@types/prompts': 2.0.14
   '@types/sharp': 0.30.4
-  tsup: 6.1.2_typescript@4.7.4
+  tsup: 6.1.2_typescript@5.2.2
   tsx: 3.6.0
-  typescript: 4.7.4
+  typescript: 5.2.2
   vitest: 0.22.1
 
 packages:
@@ -1423,7 +1423,7 @@ packages:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
     dev: true
 
-  /tsup/6.1.2_typescript@4.7.4:
+  /tsup/6.1.2_typescript@5.2.2:
     resolution: {integrity: sha512-Hw4hKDHaAQkm2eVavlArEOrAPA93bziRDamdfwaNs0vXQdUUFfItvUWY0L/F6oQQMVh6GvjQq1+HpDXw8UKtPA==}
     engines: {node: '>=14'}
     hasBin: true
@@ -1453,7 +1453,7 @@ packages:
       source-map: 0.8.0-beta.0
       sucrase: 3.22.0
       tree-kill: 1.2.2
-      typescript: 4.7.4
+      typescript: 5.2.2
     transitivePeerDependencies:
       - supports-color
       - ts-node
@@ -1481,9 +1481,9 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /typescript/4.7.4:
-    resolution: {integrity: sha512-C0WQT0gezHuw6AdY1M2jxUO83Rjf0HP7Sk1DtXj6j1EwkQNZrHAg2XPWlq62oqEhYvONq5pkC2Y9oPljWToLmQ==}
-    engines: {node: '>=4.2.0'}
+  /typescript/5.2.2:
+    resolution: {integrity: sha512-mI4WrpHsbCIcwT9cF4FZvr80QUeKvsUsUvKDoR+X/7XHQH98xYD8YHZg7ANtz2GtZt/CBq2QJ0thkGJMHfqc1w==}
+    engines: {node: '>=14.17'}
     hasBin: true
     dev: true
 
