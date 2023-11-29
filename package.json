@@ -36,7 +36,7 @@
     "picocolors": "^1.0.0",
     "png2icons": "^2.0.1",
     "prompts": "^2.4.2",
-    "sharp": "^0.30.7",
+    "sharp": "^0.33.0",
     "unconfig": "^0.3.4"
   },
   "devDependencies": {
@@ -45,7 +45,7 @@
     "@types/fs-extra": "^9.0.13",
     "@types/node": "^18.0.0",
     "@types/prompts": "^2.0.14",
-    "@types/sharp": "^0.30.4",
+    "@types/sharp": "^0.31.0",
     "tsup": "^6.1.2",
     "tsx": "^3.6.0",
     "typescript": "^4.7.4",
