@@ -1,4 +1,4 @@
-import { GenerateImagePreset } from '../modules/imger'
+import type { GenerateImagePreset } from '../modules/imger'
 
 const sizes = [16, 32, 64, 128, 256, 512]
 

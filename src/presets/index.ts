@@ -1,6 +1,6 @@
 export { defaultPreset } from './default'
 
-import { GenerateImagePreset, ResizeType } from '../modules/imger'
+import type { GenerateImagePreset, ResizeType } from '../modules/imger'
 
 const isValidResizeType = (n: Partial<ResizeType>) => typeof n === 'string' || (n.name && n.size)
 

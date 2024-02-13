@@ -1,9 +1,9 @@
 import { CAC } from 'cac'
 import { readFile } from 'fs/promises'
 import { version, name } from './const'
-import { generateImage, GenerateImagePreset } from './modules/imger'
+import { generateImage, type GenerateImagePreset } from './modules/imger'
 import { logger, warn } from './utils/dev'
-import { Arrayable, toArray } from '@0x-jerry/utils'
+import { type Arrayable, toArray } from '@0x-jerry/utils'
 import { isValidPreset, defaultPreset } from './presets'
 
 const cli = new CAC(name)
