@@ -47,7 +47,7 @@ export async function generateImage(option: GenerateImagePreset) {
     const output = join(option.output, name)
 
     if (name.endsWith('.ico')) {
-      const buf = createICO(await s.png().toBuffer(), 0, 0, true)
+      const buf = createICO(await s.png().toBuffer(), 0, 0, true, true)
 
       return writeFile(output, buf!)
     }
