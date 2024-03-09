@@ -2,7 +2,7 @@ import { join } from 'path'
 import sharp from 'sharp'
 import { readFile, writeFile } from 'fs/promises'
 import { ensureDir } from 'fs-extra'
-import { createICNS, createICO } from 'png2icons'
+import { BICUBIC2, BILINEAR, createICNS, createICO } from 'png2icons'
 import { error, logger } from '../utils/dev'
 
 export interface ResizeOption {
@@ -47,13 +47,13 @@ export async function generateImage(option: GenerateImagePreset) {
     const output = join(option.output, name)
 
     if (name.endsWith('.ico')) {
-      const buf = createICO(await s.png().toBuffer(), 0, 0, true, true)
+      const buf = createICO(await s.png().toBuffer(), BICUBIC2, 0, false, true)
 
       return writeFile(output, buf!)
     }
 
     if (name.endsWith('.icns')) {
-      const buf = createICNS(await s.toBuffer(), 5, 0)
+      const buf = createICNS(await s.toBuffer(), BILINEAR, 0)
 
       return writeFile(output, buf!)
     }
