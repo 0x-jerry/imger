@@ -29,7 +29,7 @@
     "test": "vitest run --passWithNoTests"
   },
   "dependencies": {
-    "@0x-jerry/utils": "^2.1.1",
+    "@0x-jerry/utils": "^5.0.0",
     "cac": "^6.7.14",
     "debug": "^4.3.4",
     "execa": "^8.0.1",
